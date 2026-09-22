@@ -45,8 +45,9 @@ def count_by_stage(stage):
 def search_leads(query):
     """Return the leads whose name or company contains the search text."""
     results = []
+    query = query.lower()
     for lead in all_leads():
-        if query in lead["name"] or query in lead["company"]:
+        if query in lead["name"].lower() or query in lead["company"].lower():
             results.append(lead)
     return results
 
@@ -118,6 +119,7 @@ def mark_won(lead_id):
     """Close a lead as won."""
     lead = get_lead(lead_id)
     lead["stage"] = "won"
+    lead["closed_on"] = today_text()
     save_lead(lead)
     record_activity(lead_id, "won")
 
@@ -222,7 +224,7 @@ def won_this_month(today=None):
             continue
         if lead["closed_on"] == "":
             # a won lead without a close date means the data is incomplete
-            return 0
+            continue
         if lead["closed_on"][:7] == this_month:
             count = count + 1
     return count
