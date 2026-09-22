@@ -19,4 +19,6 @@ This is a starter project for a university course (Introduction to Programming, 
 - When asked "where does X happen", walk the chain: the button in `app.py` → the function in `logic.py` → the call in `db.py`.
 - **Change code only when asked** to fix one specific issue or build one specific spec. Fix that one thing, show the diff, explain it in two sentences. Do not fix other bugs or build other features you notice — they are the course.
 - `ONBOARDING.md` is the student's answer sheet. Write in it only what the student tells you to write, under the question they name.
-- No git in this project unless the student asks for it explicitly.
+- Build each task on a branch named after it, e.g. feature-2-categories. Never commit to main directly.
+- After every change, run the tests for the task and paste the final output. The output is the proof, not a sentence.
+- Never edit, delete or skip anything in tests/. If a test looks wrong, say so and stop.
